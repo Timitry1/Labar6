@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Article
 from django.http import Http404
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 
 def archive(request):
@@ -35,3 +37,29 @@ def create_post(request):
             return render(request, 'newPost.html', {})
     else:
         raise Http404
+
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        email = request.POST.get('email')
+
+        if password != confirm_password:
+            context = {'error': 'Passwords do not match.'}
+            return render(request, 'createAcc.html', context)
+
+        if User.objects.filter(username=username).exists():
+            context = {'error': 'This username is already taken.'}
+            return render(request, 'createAcc.html', context)
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+
+        user = authenticate(request, username=username, password=password)
+        login(request, user)
+
+        return redirect('archive')
+    else:
+        return render(request, 'createAcc.html')
