@@ -1,0 +1,59 @@
+body {
+font-family: Arial, sans-serif;
+background-color: #f2f2f2;
+}
+
+h1 {
+text-align: center;
+font-size: 2rem;
+margin-top: 50px;
+}
+
+form {
+width: 400px;
+margin: 0 auto;
+background-color: #fff;
+padding: 40px;
+border-radius: 10px;
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+display: block;
+font-size: 1.1rem;
+margin-bottom: 10px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+width: 100%;
+padding: 10px;
+margin-bottom: 20px;
+border-radius: 5px;
+border: none;
+background-color: #f2f2f2;
+color: #666;
+font-size: 1.1rem;
+}
+
+form button[type="submit"] {
+background-color: #1abc9c;
+color: #fff;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+font-size: 1.2rem;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+background-color: #148f77;
+}
+
+p {
+text-align: center;
+font-size: 1.1rem;
+color: #ff0000;
+margin-top: 20px;
+}

@@ -9,8 +9,16 @@
 
 
 <div class="header">
-    <img class="logo" src="https://thumbs.dreamstime.com/b/логотип-талисмана-банана-100374728.jpg" />
-    <a href="{% url 'registration' %}" class="nadpis">Register</a>
+    <div class="logo-container">
+        <img class="logo" src="https://thumbs.dreamstime.com/b/логотип-талисмана-банана-100374728.jpg" />
+    </div>
+    {% if request.user.is_authenticated%}
+    <a href="{% url 'article' %}" class="register-link">Создать статью</a>
+    <a href="{% url 'logout' %}" class="logout">Выйти</a>
+    {% else %}
+    <a href="{% url 'registration' %}" class="register-link">Регистрация</a>
+    <a href="{% url 'login' %}" class="login">Вход</a>
+    {% endif %}
 </div>
 
 

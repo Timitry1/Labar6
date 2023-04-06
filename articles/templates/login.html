@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Вход</title>
+  <link rel="stylesheet" href="{{ STATIC_URL }}/static/login.css">
+</head>
+
+<body>
+
+  <h1>Вход в систему</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div>
+      <label for="username">Имя пользователя:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+
+    <div>
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+
+  {% if error %}
+    <p><strong>{{ error }}</strong></p>
+  {% endif %}
+
+</body>
+</html>

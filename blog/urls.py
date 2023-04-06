@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from articles import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +24,6 @@ urlpatterns = [
     re_path(r'^article/(?P<article_id>\d+)$', views.get_article, name='get_article'),
     path('article/new/', views.create_post, name='article'),
     path('reg/', views.register, name='registration'),
+    path('log/', views.user_login, name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]

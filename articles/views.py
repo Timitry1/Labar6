@@ -47,11 +47,11 @@ def register(request):
         email = request.POST.get('email')
 
         if password != confirm_password:
-            context = {'error': 'Passwords do not match.'}
+            context = {'error': 'Пароли не совпадают.'}
             return render(request, 'createAcc.html', context)
 
         if User.objects.filter(username=username).exists():
-            context = {'error': 'This username is already taken.'}
+            context = {'error': 'Это имя уже занято.'}
             return render(request, 'createAcc.html', context)
 
         user = User.objects.create_user(username=username, email=email, password=password)
@@ -63,3 +63,18 @@ def register(request):
         return redirect('archive')
     else:
         return render(request, 'createAcc.html')
+
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('archive')
+        else:
+            return render(request, 'login.html', {'error': 'Неверный логин или пароль'})
+    else:
+        return render(request, 'login.html')
