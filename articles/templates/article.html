@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/article.css">
+</head>
+<body class="article">
+
+
+<div class="header">
+    <img src="https://thumbs.dreamstime.com/b/логотип-талисмана-банана-100374728.jpg" />
+</div>
+
+<div class="nadpis">
+    <a href="/archive/"><h2 class="nadpis">Все записи</h2></a>
+</div>
+
+<div class="one-post">
+    <h1 class="post-title">{{ post.title }}</h1>
+    <div class="article-info">
+        <div class="article-author">{{ post.author.username }}</div>
+        <div class="article-created-date">{{ post.created_date }}</div>
+    </div>
+    <p class="article-text">{{ post.get_excerpt }}</p>
+</div>
+
+
+</body>
+</html>

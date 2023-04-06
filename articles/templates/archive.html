@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Архив статей</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/article.css">
+</head>
+<body class="archive">
+
+
+<div class="header">
+  <img src="https://thumbs.dreamstime.com/b/логотип-талисмана-банана-100374728.jpg" />
+</div>
+
+
+<div class="archive">
+    {% for post in posts %}
+        <div class="one-post">
+            <a href="{% url 'get_article' post.id %}" class="post-title">{{ post.title }}</a>
+            <div class="article-info">
+                <div class="article-author">{{ post.author.username }}</div>
+                <div class="article-created-date">{{ post.created_date }}</div>
+            </div>
+            <p class="article-text">{{ post.get_excerpt }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>
